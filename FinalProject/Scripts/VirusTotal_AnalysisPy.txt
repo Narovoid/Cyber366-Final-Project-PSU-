@@ -1,0 +1,17 @@
+import requests
+from config.config import VIRUSTOTAL_API_URL, VIRUSTOTAL_API_KEY, SAMPLE_PATH
+
+HEADERS = {"x-apikey": VIRUSTOTAL_API_KEY}
+
+def submit_file_to_virustotal(file_path):
+    """Submit a file to VirusTotal for analysis."""
+    with open(SAMPLE_PATH + file_path, "rb") as sample:
+        files = {"file": sample}
+        response = requests.post(f"{VIRUSTOTAL_API_URL}/files", headers=HEADERS, files=files)
+        return response.json().get("data", {}).get("id")
+
+def get_virustotal_report(file_id):
+    """Retrieve the report for a completed scan."""
+    report_url = f"{VIRUSTOTAL_API_URL}/files/{file_id}"
+    response = requests.get(report_url, headers=HEADERS)
+    return response.json()

@@ -1,0 +1,10 @@
+# config/config_anyrun.py
+
+# Any.Run API endpoint
+API_URL = "https://api.any.run/v1"
+
+# API key for Any.Run (replace "YOUR_ANYRUN_API_KEY" with your actual key)
+API_KEY = "YOUR_ANYRUN_API_KEY"
+
+# Path to the folder containing malware samples
+SAMPLE_PATH = "./data/samples/"

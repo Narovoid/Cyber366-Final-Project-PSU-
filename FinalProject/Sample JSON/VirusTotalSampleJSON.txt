@@ -1,0 +1,12 @@
+{
+  "file_id": "abcdef1234567890",
+  "scan_date": "2024-01-15T12:34:56",
+  "positives": 45,
+  "total": 60,
+  "scans": {
+    "Avast": {"detected": true, "version": "20.5.5410", "result": "Trojan.Gen", "update": "2024-01-15"},
+    "Kaspersky": {"detected": true, "version": "15.0.1", "result": "HEUR:Trojan.Win32.Generic", "update": "2024-01-15"},
+    "Symantec": {"detected": false, "version": "14.2.0", "result": null, "update": "2024-01-15"}
+  },
+  "permalink": "https://www.virustotal.com/gui/file/abcdef1234567890/detection"
+}

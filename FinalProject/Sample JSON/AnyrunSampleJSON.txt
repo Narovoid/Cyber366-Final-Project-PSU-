@@ -1,0 +1,24 @@
+{
+  "task_id": "123456789",
+  "status": "completed",
+  "behavior": {
+    "api_calls": [
+      {"function": "CreateFile", "arguments": {"filePath": "C:\\malware\\payload.exe"}},
+      {"function": "WriteFile", "arguments": {"filePath": "C:\\malware\\payload.exe"}},
+      {"function": "InternetOpenUrl", "arguments": {"url": "http://malicious-site.com"}}
+    ],
+    "registry_modifications": [
+      {"key": "HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run", "value": "malicious_value"}
+    ],
+    "file_changes": [
+      {"file": "C:\\Users\\Victim\\Documents\\file.txt", "action": "modified"},
+      {"file": "C:\\malware\\payload.exe", "action": "created"}
+    ]
+  },
+  "network": {
+    "connections": [
+      {"ip": "192.168.1.100", "port": 80, "protocol": "HTTP", "domain": "malicious-site.com"},
+      {"ip": "10.0.0.200", "port": 443, "protocol": "HTTPS", "domain": "control-server.com"}
+    ]
+  }
+}

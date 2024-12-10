@@ -1,0 +1,10 @@
+# config/config_virustotal.py
+
+# VirusTotal API endpoint
+API_URL = "https://www.virustotal.com/api/v3"
+
+# API key for VirusTotal (replace "YOUR_VIRUSTOTAL_API_KEY" with your actual key)
+API_KEY = "YOUR_VIRUSTOTAL_API_KEY"
+
+# Path to the folder containing malware samples
+SAMPLE_PATH = "./data/samples/"

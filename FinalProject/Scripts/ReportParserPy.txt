@@ -1,0 +1,10 @@
+def parse_report(report):
+    """Extract key details from the sandbox report."""
+    if "behavior" in report:
+        api_calls = [entry['api'] for entry in report['behavior']['apistats']]
+    if "network" in report:
+        network_connections = report['network']['hosts']
+    if "registry" in report:
+        registry_modifications = report['behavior']['summary'].get('registry', [])
+    if "files" in report:
+        file_modifications = report['behavior']['summary'].get('file_opened', [])

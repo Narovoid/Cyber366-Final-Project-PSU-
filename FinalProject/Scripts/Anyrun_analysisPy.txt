@@ -1,0 +1,22 @@
+import requests
+import time
+from config.config_windows import ANYRUN_API_URL, ANYRUN_API_KEY, SAMPLE_PATH
+
+HEADERS = {"Authorization": f"Bearer {ANYRUN_API_KEY}"}
+
+def submit_file_to_anyrun(file_path):
+    """Submit a file to Any.Run for analysis."""
+    with open(SAMPLE_PATH + file_path, "rb") as sample:
+        files = {"file": sample}
+        response = requests.post(f"{ANYRUN_API_URL}/analysis", headers=HEADERS, files=files)
+        return response.json().get("task_id")
+
+def get_anyrun_report(task_id):
+    """Retrieve the report once analysis is complete."""
+    report_url = f"{ANYRUN_API_URL}/analysis/{task_id}/report"
+    while True:
+        response = requests.get(report_url, headers=HEADERS)
+        if response.status_code == 200:
+            return response.json()
+        elif response.status_code == 404:
+            time.sleep(10)  # Wait for 10 seconds before checking again

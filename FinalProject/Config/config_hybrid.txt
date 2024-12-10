@@ -1,0 +1,10 @@
+# config/config_hybrid.py
+
+# Hybrid Analysis API endpoint
+API_URL = "https://www.hybrid-analysis.com/api/v2"
+
+# API key for Hybrid Analysis (replace "YOUR_HYBRID_API_KEY" with your actual key)
+API_KEY = "YOUR_HYBRID_API_KEY"
+
+# Path to the folder containing malware samples
+SAMPLE_PATH = "./data/samples/"

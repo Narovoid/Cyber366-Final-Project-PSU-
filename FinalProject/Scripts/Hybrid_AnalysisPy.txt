@@ -1,0 +1,22 @@
+import requests
+import time
+from config.config import HYBRID_ANALYSIS_API_URL, HYBRID_ANALYSIS_API_KEY, SAMPLE_PATH
+
+HEADERS = {"api-key": HYBRID_ANALYSIS_API_KEY}
+
+def submit_file_to_hybrid(file_path):
+    """Submit a file to Hybrid Analysis for analysis."""
+    with open(SAMPLE_PATH + file_path, "rb") as sample:
+        files = {"file": sample}
+        response = requests.post(f"{HYBRID_ANALYSIS_API_URL}/submit", headers=HEADERS, files=files)
+        return response.json().get("job_id")
+
+def get_hybrid_report(job_id):
+    """Retrieve the report for a completed job."""
+    report_url = f"{HYBRID_ANALYSIS_API_URL}/report/{job_id}"
+    while True:
+        response = requests.get(report_url, headers=HEADERS)
+        if response.status_code == 200:
+            return response.json()
+        elif response.status_code == 404:
+            time.sleep(10)

@@ -1,0 +1,25 @@
+{
+  "job_id": "987654321",
+  "status": "completed",
+  "summary": {
+    "api_calls": [
+      {"function": "NtCreateFile", "module": "ntdll.dll", "description": "Creates or opens a file"},
+      {"function": "CryptEncrypt", "module": "crypt32.dll", "description": "Encrypts data"}
+    ],
+    "registry_changes": [
+      {"key": "HKEY_LOCAL_MACHINE\\Software\\Malware", "operation": "write", "value": "malicious_data"}
+    ],
+    "file_operations": [
+      {"file_path": "C:\\Windows\\System32\\malicious.dll", "action": "created"},
+      {"file_path": "C:\\Users\\User\\Documents\\sensitive.txt", "action": "encrypted"}
+    ],
+    "network_activity": [
+      {"domain": "malicious-domain.com", "ip": "203.0.113.10", "port": 8080, "protocol": "TCP"},
+      {"domain": "backup-server.com", "ip": "198.51.100.20", "port": 443, "protocol": "HTTPS"}
+    ]
+  },
+  "indicators": {
+    "suspicious": ["Uses encryption functions", "Attempts to connect to multiple domains"],
+    "malicious_score": 75
+  }
+}
